@@ -16,7 +16,7 @@ import com.unicacorp.interact.api.Offer;
 import com.unicacorp.interact.api.OfferList;
 import com.unicacorp.interact.api.Response;
 import com.unicacorp.interact.api.rest.RestClientConnector;
-import com.unicacorp.interact.testclient.JavaPrintUtil;
+
 
 public class InteractRestClient {
 
@@ -115,6 +115,22 @@ public class InteractRestClient {
 		cmd.setAudienceLevel("MDM_Person");
 		cmd.setAudienceID(new NameValuePairImpl[] {
 				new NameValuePairImpl("MDM_PERSON_ID", NameValuePair.DATA_TYPE_STRING, "1") });
+		
+		NameValuePair userId = new NameValuePairImpl();
+		userId.setName("user_id");
+		userId.setValueAsString("hkolukul");
+		userId.setValueDataType(NameValuePair.DATA_TYPE_STRING);
+		
+		//NameValuePair userId = new NameValuePairImpl("user_id","string","hkolukul");
+		
+		NameValuePair policyId = new NameValuePairImpl();
+		policyId.setName("policy_id");
+		policyId.setValueAsString("00001234");
+		policyId.setValueDataType(NameValuePair.DATA_TYPE_STRING);
+		
+		NameValuePairImpl[] eventParameters = {(NameValuePairImpl) userId,(NameValuePairImpl) policyId};
+		
+		cmd.setEventParameters(eventParameters);
 		return cmd;
 	}
 
